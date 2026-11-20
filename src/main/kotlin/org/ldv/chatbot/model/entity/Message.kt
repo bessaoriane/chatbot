@@ -19,7 +19,9 @@ class Message(
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    var typeMessage: TypeMessage
-){
-    constructor(): this(id = null, contenu="", dateCreation= LocalDateTime.now(), TypeMessage.UTILISATEUR)
-}
+    var typeMessage: TypeMessage,
+
+    @ManyToOne
+    @JoinColumn(name = "conversation_id")
+    var conversation: Conversation? = null
+)

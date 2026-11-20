@@ -14,5 +14,12 @@ class Conversation(
     var titre: String,
 
     @Column(nullable = false)
-    var dateCreation: LocalDateTime = LocalDateTime.now()
+    var dateCreation: LocalDateTime = LocalDateTime.now(),
+
+    @ManyToOne
+    @JoinColumn(name = "modele_ia_id")
+    var modeleIA: ModeleIA? = null,
+
+    @OneToMany(mappedBy = "conversation", cascade = [CascadeType.ALL], orphanRemoval = true)
+    var messages: MutableList<Message> = mutableListOf()
 )
