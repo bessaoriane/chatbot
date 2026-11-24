@@ -1,6 +1,5 @@
 package org.ldv.chatbot.model.entity
 
-import TypeMessage
 import jakarta.persistence.*
 import java.time.LocalDateTime
 
