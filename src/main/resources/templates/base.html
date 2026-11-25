@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="fr" th:fragment="base(content, titre, activePage)">
 <head>
     <meta charset="UTF-8">
-    <title th:text="${titre} ?: 'TodoApp'">TodoApp</title>
+    <title th:text="${titre} ?: 'ChatBot'">ChatBot</title>
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" th:href="@{/images/favicon.ico}">
@@ -18,10 +18,10 @@
 <body class="d-flex flex-column min-vh-100">
 
 <!-- header -->
-<header th:replace="~{fragments/header :: header(${activePage})}"></header>
+<header th:replace="~{fragments/header :: header}"></header>
 
 <!-- Contenu principal -->
-<main class="container flex-grow-1">
+<main class="container flex-grow-1 my-3">
     <!-- Contenu spécifique des pages -->
     <div th:replace="${content}"></div>
 </main>
@@ -33,4 +33,3 @@
 <script th:src="@{/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
 </body>
 </html>
-

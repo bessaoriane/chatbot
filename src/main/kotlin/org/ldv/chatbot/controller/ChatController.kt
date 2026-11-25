@@ -38,7 +38,7 @@ class ChatController(
         model.addAttribute("messages", emptyList<Message>())
         model.addAttribute(
             "conversations",
-            conversationDAO.findAllByOrderByDateDerniereModificationDesc()
+            conversationDAO.findAllByOrderByDateCreationDesc()
         )
 
         return "utilisateur/chat"
@@ -100,8 +100,7 @@ class ChatController(
             println("Erreur lors de l’appel au modèle ${modele.nom} : ${e.message}")
         }
 
-        conversationEnregistree.dateDerniereModification =
-            LocalDateTime.now()
+
 
         conversationDAO.save(conversationEnregistree)
 
@@ -120,7 +119,7 @@ class ChatController(
 
         model.addAttribute(
             "conversations",
-            conversationDAO.findAllByOrderByDateDerniereModificationDesc()
+            conversationDAO.findAllByOrderByDateCreationDesc()
         )
 
         model.addAttribute("conversation", conversation)
@@ -174,7 +173,7 @@ class ChatController(
             println("Erreur lors de l'appel à ${conversation.modeleIA!!.nom} : ${e.message}")
         }
 
-        conversation.dateDerniereModification = LocalDateTime.now()
+
         conversationDAO.save(conversation)
 
         return "redirect:/conversations/$id"
